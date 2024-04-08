@@ -1,4 +1,4 @@
-# flutter_application_test_01
+# netflix_clone_practice
 
 A new Flutter project.
 
