@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  const app = MaterialApp(title: 'Netflix Clone', home: Text("Hello World"));
-  runApp(app);
+  runApp(const StartPage());
+}
+
+class StartPage extends StatelessWidget {
+  const StartPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: "netflix clone",
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Netflix Clone"),
+          ),
+        ));
+    ;
+  }
 }
