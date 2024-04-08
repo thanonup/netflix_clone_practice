@@ -10,12 +10,17 @@ class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "netflix clone",
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Netflix Clone"),
+      title: "netflix clone",
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Netflix Clone",
+            style: TextStyle(color: Colors.white),
           ),
-        ));
-    ;
+          backgroundColor: Color.fromARGB(255, 203, 203, 203),
+        ),
+      ),
+    );
   }
 }
