@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone_practice/SplashScreen.dart';
+import 'package:netflix_clone_practice/HomeScene.dart';
 
 void main() {
   runApp(const StartPage());
@@ -9,18 +11,11 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "netflix clone",
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Netflix Clone",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromARGB(255, 203, 203, 203),
-        ),
-      ),
+    return const MaterialApp(
+      title: 'Netflix Clone',
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.dark,
+      home: SplashScreen(),
     );
   }
 }
