@@ -10,19 +10,18 @@ class HomeScene extends StatefulWidget {
 class _HomeSceneState extends State<HomeScene> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "netflix clone",
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Image.asset(
-            "assets/image/netflix-logo.png",
-            width: 120,
-            height: 50,
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          bottomNavigationBar: Container(
+            height: 70,
+            color: Colors.black,
+            child: const TabBar(tabs: [
+              Tab(icon: Icon(Icons.home), text: "Home"),
+              Tab(icon: Icon(Icons.home), text: "Home"),
+              Tab(icon: Icon(Icons.home), text: "Home")
+            ]),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
