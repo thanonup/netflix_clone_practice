@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone_practice/HomeScene.dart';
+import 'package:netflix_clone_practice/BottomNavigationView.dart';
 import 'package:netflix_clone_practice/SplashScreen.dart';
 
 void main() {
@@ -27,7 +27,7 @@ class StartPage extends StatelessWidget {
       initialRoute: '/SplashScreen',
       routes: {
         '/SplashScreen': (context) => const SplashScreen(),
-        '/HomeScene': (context) => const HomeScene()
+        '/MainScene': (context) => const BottomNavigationView()
       },
     );
   }
