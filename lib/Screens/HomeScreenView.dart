@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone_practice/beans/upcomingBean.dart';
+import 'package:netflix_clone_practice/services/ApiServices.dart';
 
 class HomeScreenView extends StatefulWidget {
   const HomeScreenView({super.key});
@@ -8,6 +10,15 @@ class HomeScreenView extends StatefulWidget {
 }
 
 class _HomeScreenViewState extends State<HomeScreenView> {
+  late Future<UpcomingMoiveBean> upcomingFuture;
+  ApiServices apiService = ApiServices();
+
+  @override
+  void initState() {
+    super.initState();
+    upcomingFuture = apiService.getUpcomingMoves();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
