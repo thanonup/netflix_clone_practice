@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone_practice/BottomNavigationView.dart';
-import 'package:netflix_clone_practice/SplashScreen.dart';
+import 'package:netflix_clone_practice/bottom_navigation_view.dart';
+import 'package:netflix_clone_practice/splash_screen.dart';
 
 void main() {
   runApp(const StartPage());

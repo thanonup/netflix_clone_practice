@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:netflix_clone_practice/beans/upcomingBean.dart';
+import 'package:netflix_clone_practice/beans/upcoming_bean.dart';
 import 'package:netflix_clone_practice/common/utils.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,6 +18,7 @@ class ApiServices {
 
     if (reponse.statusCode == 200) {
       log("Suessce");
+      //log(reponse.body);
 
       return UpcomingMoiveBean.fromJson(jsonDecode(reponse.body));
     }

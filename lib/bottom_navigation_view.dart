@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_practice/Screens/HomeScreenView.dart';
-import 'package:netflix_clone_practice/Screens/NewsScreenView.dart';
-import 'package:netflix_clone_practice/Screens/SearchScreenView.dart';
+import 'package:netflix_clone_practice/Screens/home_screen_view.dart';
+import 'package:netflix_clone_practice/Screens/news_screen_view.dart';
+import 'package:netflix_clone_practice/Screens/search_screen_view.dart';
 
 class BottomNavigationView extends StatefulWidget {
   const BottomNavigationView({super.key});

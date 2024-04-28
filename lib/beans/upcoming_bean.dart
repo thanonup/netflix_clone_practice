@@ -196,10 +196,14 @@ class Result {
       };
 }
 
-enum OriginalLanguage { EN, ES }
+enum OriginalLanguage { EN, ES, JA, KO }
 
-final originalLanguageValues =
-    EnumValues({"en": OriginalLanguage.EN, "es": OriginalLanguage.ES});
+final originalLanguageValues = EnumValues({
+  "en": OriginalLanguage.EN,
+  "es": OriginalLanguage.ES,
+  "ja": OriginalLanguage.JA,
+  "ko": OriginalLanguage.KO
+});
 
 class EnumValues<T> {
   Map<String, T> map;
