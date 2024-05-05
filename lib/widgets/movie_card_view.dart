@@ -16,45 +16,39 @@ class MovieCardView extends StatelessWidget {
     return FutureBuilder(
         future: future,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-                child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Column(children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CircularProgressIndicator()
-                    ])));
+          if (snapshot.hasData) {
+            var data = snapshot.data?.results;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  headerText + " (${data?.length})",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: data?.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                // color: Colors.white,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Image.network(
+                                "$imageUrl${data?[index].posterPath}"),
+                          );
+                        }))
+              ],
+            );
+          } else {
+            return const Column(
+                children: [SizedBox.shrink(), CircularProgressIndicator()]);
           }
-
-          var data = snapshot.data?.results;
-          return Column(
-            children: [
-              Text(
-                headerText + " (${data?.length})",
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: data?.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              // color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Image.network(
-                              "$imageUrl${data?[index].posterPath}"),
-                        );
-                      }))
-            ],
-          );
         });
   }
 }

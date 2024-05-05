@@ -1,43 +1,37 @@
 import 'dart:convert';
 
-class UpcomingMoiveBean {
-  Dates dates;
+class TvSeriesBean {
   int page;
   List<Result> results;
   int totalPages;
   int totalResults;
 
-  UpcomingMoiveBean({
-    required this.dates,
+  TvSeriesBean({
     required this.page,
     required this.results,
     required this.totalPages,
     required this.totalResults,
   });
 
-  UpcomingMoiveBean copyWith({
-    Dates? dates,
+  TvSeriesBean copyWith({
     int? page,
     List<Result>? results,
     int? totalPages,
     int? totalResults,
   }) =>
-      UpcomingMoiveBean(
-        dates: dates ?? this.dates,
+      TvSeriesBean(
         page: page ?? this.page,
         results: results ?? this.results,
         totalPages: totalPages ?? this.totalPages,
         totalResults: totalResults ?? this.totalResults,
       );
 
-  factory UpcomingMoiveBean.fromRawJson(String str) =>
-      UpcomingMoiveBean.fromJson(json.decode(str));
+  factory TvSeriesBean.fromRawJson(String str) =>
+      TvSeriesBean.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory UpcomingMoiveBean.fromJson(Map<String, dynamic> json) =>
-      UpcomingMoiveBean(
-        dates: Dates.fromJson(json["dates"]),
+  factory TvSeriesBean.fromJson(Map<String, dynamic> json) => TvSeriesBean(
         page: json["page"],
         results:
             List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
@@ -46,46 +40,10 @@ class UpcomingMoiveBean {
       );
 
   Map<String, dynamic> toJson() => {
-        "dates": dates.toJson(),
         "page": page,
         "results": List<dynamic>.from(results.map((x) => x.toJson())),
         "total_pages": totalPages,
         "total_results": totalResults,
-      };
-}
-
-class Dates {
-  DateTime maximum;
-  DateTime minimum;
-
-  Dates({
-    required this.maximum,
-    required this.minimum,
-  });
-
-  Dates copyWith({
-    DateTime? maximum,
-    DateTime? minimum,
-  }) =>
-      Dates(
-        maximum: maximum ?? this.maximum,
-        minimum: minimum ?? this.minimum,
-      );
-
-  factory Dates.fromRawJson(String str) => Dates.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory Dates.fromJson(Map<String, dynamic> json) => Dates(
-        maximum: DateTime.parse(json["maximum"]),
-        minimum: DateTime.parse(json["minimum"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "maximum":
-            "${maximum.year.toString().padLeft(4, '0')}-${maximum.month.toString().padLeft(2, '0')}-${maximum.day.toString().padLeft(2, '0')}",
-        "minimum":
-            "${minimum.year.toString().padLeft(4, '0')}-${minimum.month.toString().padLeft(2, '0')}-${minimum.day.toString().padLeft(2, '0')}",
       };
 }
 
@@ -94,7 +52,7 @@ class Result {
   String backdropPath;
   List<int> genreIds;
   int id;
-  OriginalLanguage originalLanguage;
+  String originalLanguage;
   String originalTitle;
   String overview;
   double popularity;
@@ -127,7 +85,7 @@ class Result {
     String? backdropPath,
     List<int>? genreIds,
     int? id,
-    OriginalLanguage? originalLanguage,
+    String? originalLanguage,
     String? originalTitle,
     String? overview,
     double? popularity,
@@ -164,8 +122,7 @@ class Result {
         backdropPath: json["backdrop_path"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
-        originalLanguage:
-            originalLanguageValues.map[json["original_language"]]!,
+        originalLanguage: json["original_language"],
         originalTitle: json["original_title"],
         overview: json["overview"],
         popularity: json["popularity"]?.toDouble(),
@@ -182,7 +139,7 @@ class Result {
         "backdrop_path": backdropPath,
         "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
         "id": id,
-        "original_language": originalLanguageValues.reverse[originalLanguage],
+        "original_language": originalLanguage,
         "original_title": originalTitle,
         "overview": overview,
         "popularity": popularity,
@@ -194,24 +151,4 @@ class Result {
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
-}
-
-enum OriginalLanguage { EN, ES, FR }
-
-final originalLanguageValues = EnumValues({
-  "en": OriginalLanguage.EN,
-  "es": OriginalLanguage.ES,
-  "fr": OriginalLanguage.FR
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }
