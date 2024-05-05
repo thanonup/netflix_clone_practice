@@ -26,6 +26,7 @@ class MoviesPreviewSlider extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     dataBean.results[index].title,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontSize: 20),
                   )
                 ],
