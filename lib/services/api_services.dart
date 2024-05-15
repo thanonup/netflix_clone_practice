@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:netflix_clone_practice/beans/search_bean.dart';
 import 'package:netflix_clone_practice/beans/tv_series_bean.dart';
 import 'package:netflix_clone_practice/beans/upcoming_bean.dart';
 import 'package:netflix_clone_practice/common/utils.dart';
@@ -54,5 +55,23 @@ class ApiServices {
     }
 
     throw Exception("Fialed to load top rated");
+  }
+
+  Future<SearchBean> getSearchedMovie(String searchText) async {
+    endPoint = "/search/movie?query=$searchText";
+    final url = "$baseUrl$endPoint$key";
+    print(" search url is $url");
+    final reponse = await http.get(Uri.parse(url), headers: {
+      'Authorization':
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDJiN2ExZjdiNTYxMDVjNjdjMWVmYTU4YjM1MTYyMCIsInN1YiI6IjY2MmE2OThjODg2MzQ4MDExZWFlNWNmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qdl8_DxmOyknwkXhcAlMJoMOGHqc92FnYDZqeEMEt5w"
+    });
+
+    if (reponse.statusCode == 200) {
+      log("Suessce load search");
+
+      return SearchBean.fromJson(jsonDecode(reponse.body));
+    }
+
+    throw Exception("Fialed to load Search");
   }
 }
