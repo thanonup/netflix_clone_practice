@@ -59,8 +59,8 @@ class ApiServices {
 
   Future<SearchBean> getSearchedMovie(String searchText) async {
     endPoint = "/search/movie?query=$searchText";
-    final url = "$baseUrl$endPoint$key";
-    print(" search url is $url");
+    final url = "$baseUrl$endPoint";
+
     final reponse = await http.get(Uri.parse(url), headers: {
       'Authorization':
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDJiN2ExZjdiNTYxMDVjNjdjMWVmYTU4YjM1MTYyMCIsInN1YiI6IjY2MmE2OThjODg2MzQ4MDExZWFlNWNmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qdl8_DxmOyknwkXhcAlMJoMOGHqc92FnYDZqeEMEt5w"
